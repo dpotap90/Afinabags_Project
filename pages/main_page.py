@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from base.base_class import Base
 
+
 class Main_page(Base):
 
     url = "https://afinabags.ru/"
