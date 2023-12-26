@@ -14,7 +14,7 @@ class Product_692_page(Base):
     # Locators
 
     cart = "//button[@class='item-card__control-btn-cart']"
-    checkout_button = "//a[text()='Перейти в корзину']"
+    checkout_button = "//a[contains(@class, 'item-card__control-btn-cart-color')]"
 
 
     # Getters
@@ -32,6 +32,10 @@ class Product_692_page(Base):
         self.get_cart().click()
         print("Click cart")
 
+    def scroll_checkout_button(self):
+        self.driver.execute_script("window.scrollTo(0, 500);")
+        print("Scroll checkout_button")
+
     def click_checkout_button(self):
         self.get_checkout_button().click()
         print("Click checkout_button")
@@ -41,6 +45,7 @@ class Product_692_page(Base):
     def cart_and_checkout_products_692(self):
         self.get_current_url()
         self.click_cart()
+        self.scroll_checkout_button()
         self.click_checkout_button()
         self.assert_url("https://afinabags.ru/order/")
         self.get_screenshot()

@@ -10,13 +10,13 @@ class Main_page(Base):
     url = "https://afinabags.ru/"
 
 
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
+    # def __init__(self, driver):
+    #     super().__init__(driver)
+    #     self.driver = driver
 
 
     # Locators
-    catalog_menu = "//header/div[3]/ul/li[1]"
+    catalog_menu = "//header/div[2]/ul/li[1]/a"
     all_catalog = "//a[text()='Посмотреть все']"
 
     # Getters
