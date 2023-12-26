@@ -1,5 +1,4 @@
 import datetime
-
 class Base():
 
     def __init__(self, driver):
@@ -21,7 +20,9 @@ class Base():
     def get_screenshot(self, ):
         now_date = datetime.datetime.utcnow().strftime("%Y.%m.%d.%H.%M.%S")  # Дата и время в настоящий момент
         name_screenshot = 'screenshot ' + now_date + '.png'
-        self.driver.save_screenshot('C:\\Users\\Дмитрий Потапов\\PycharmProjects\\Afinabags_Project\\screen\\' + name_screenshot)  # Делаем Скриншот в папку
+        self.driver.save_screenshot('..\\screen\\' + name_screenshot)  # Делаем Скриншот в папку
+        print('Screen good')
+
 
     """Method assert url"""
 
