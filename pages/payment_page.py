@@ -1,8 +1,10 @@
+import allure
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from base.base_class import Base
+from utilities.logger import Logger
 
 
 class Order_cart_page(Base):
@@ -113,19 +115,23 @@ class Order_cart_page(Base):
 
     # Methods
     def order_cart(self):
-        self.get_current_url()
-        self.assert_url("https://afinabags.ru/order/")
-        self.input_first_name("Test")
-        self.input_last_name("Testovich")
-        self.input_email_name("123@test.ru")
-        self.input_phone_number("0000000000")
-        self.select_city_1()
-        self.scroll_to_delivery_1_and_select()
-        self.input_street_name()
-        self.input_house_name()
-        self.scroll_to_payment_method_1_and_select()
-        # self.click_order_button()
-        self.get_screenshot()
+        with allure.step("order_cart"):
+            Logger.add_start_step(method="cart_and_checkout_products_692")
+            self.get_current_url()
+            self.assert_url("https://afinabags.ru/order/")
+            self.input_first_name("Test")
+            self.input_last_name("Testovich")
+            self.input_email_name("123@test.ru")
+            self.input_phone_number("0000000000")
+            self.select_city_1()
+            self.scroll_to_delivery_1_and_select()
+            self.input_street_name()
+            self.input_house_name()
+            self.scroll_to_payment_method_1_and_select()
+            # self.click_order_button()
+            self.get_screenshot()
+            "cart_and_checkout_products_692"
+            Logger.add_end_step(url=self.driver.current_url, method="cart_and_checkout_products_692")
 
 
 

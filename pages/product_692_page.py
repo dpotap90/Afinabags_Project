@@ -1,7 +1,10 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from base.base_class import Base
+from utilities.logger import Logger
+
 
 class Product_692_page(Base):
 
@@ -43,10 +46,13 @@ class Product_692_page(Base):
     # Methods
 
     def cart_and_checkout_products_692(self):
-        self.get_current_url()
-        self.click_cart()
-        self.scroll_checkout_button()
-        self.click_checkout_button()
-        self.assert_url("https://afinabags.ru/order/")
-        self.get_screenshot()
+        with allure.step("cart_and_checkout_products_692"):
+            Logger.add_start_step(method="cart_and_checkout_products_692")
+            self.get_current_url()
+            self.click_cart()
+            self.scroll_checkout_button()
+            self.click_checkout_button()
+            self.assert_url("https://afinabags.ru/order/")
+            self.get_screenshot()
+            Logger.add_end_step(url=self.driver.current_url, method="cart_and_checkout_products_692")
 

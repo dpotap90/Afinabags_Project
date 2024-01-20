@@ -1,0 +1,44 @@
+
+-----
+Test: tests/test_buy_product.py::test_buy_product (call)
+Start time: 2024-01-20 18:58:28.355953
+Start name method: select_catalogs
+
+End time: 2024-01-20 18:58:41.223575
+End name method: select_catalogs
+URL: https://afinabags.ru/catalog/
+
+-----
+
+-----
+Test: tests/test_buy_product.py::test_buy_product (call)
+Start time: 2024-01-20 18:58:41.224651
+Start name method: select_products_692
+
+End time: 2024-01-20 18:58:53.280388
+End name method: select_products_692
+URL: https://afinabags.ru/catalog/sumki_i_ryukzaki/model-692/
+
+-----
+
+-----
+Test: tests/test_buy_product.py::test_buy_product (call)
+Start time: 2024-01-20 18:58:53.282399
+Start name method: cart_and_checkout_products_692
+
+End time: 2024-01-20 18:58:58.416480
+End name method: cart_and_checkout_products_692
+URL: https://afinabags.ru/order/
+
+-----
+
+-----
+Test: tests/test_buy_product.py::test_buy_product (call)
+Start time: 2024-01-20 18:58:58.417483
+Start name method: cart_and_checkout_products_692
+
+End time: 2024-01-20 18:59:01.978312
+End name method: cart_and_checkout_products_692
+URL: https://afinabags.ru/order/
+
+-----

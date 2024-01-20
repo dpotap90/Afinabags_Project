@@ -1,9 +1,12 @@
 import time
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from base.base_class import Base
+from utilities.logger import Logger
+
 
 class Catalog_page(Base):
 
@@ -75,13 +78,16 @@ class Catalog_page(Base):
     # Methods
 
     def select_products_692(self):
-        self.get_current_url()
-        self.click_filter_open()
-        self.click_filter_price_open()
-        self.slider_prices()
-        self.button_slider_prices()
-        self.scroll_to_product_692()
-        self.click_select_product_692()
-        self.assert_url("https://afinabags.ru/catalog/sumki_i_ryukzaki/model-692/")
-        self.assert_word(self.get_mail_word(), "Модель 692")
-        self.get_screenshot()
+        with allure.step("select_products_692"):
+            Logger.add_start_step(method="select_products_692")
+            self.get_current_url()
+            self.click_filter_open()
+            self.click_filter_price_open()
+            self.slider_prices()
+            self.button_slider_prices()
+            self.scroll_to_product_692()
+            self.click_select_product_692()
+            self.assert_url("https://afinabags.ru/catalog/sumki_i_ryukzaki/model-692/")
+            self.assert_word(self.get_mail_word(), "Модель 692")
+            self.get_screenshot()
+            Logger.add_end_step(url=self.driver.current_url, method="select_products_692")
