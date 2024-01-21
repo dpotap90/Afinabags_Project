@@ -12,11 +12,6 @@ class Main_page(Base):
     url = "https://afinabags.ru/"
 
 
-    # def __init__(self, driver):
-    #     super().__init__(driver)
-    #     self.driver = driver
-
-
     # Locators
     catalog_menu = "//header/div[2]/ul/li[1]/a"
     all_catalog = "//a[text()='Посмотреть все']"
@@ -47,7 +42,7 @@ class Main_page(Base):
             self.get_current_url()
             self.hover_over_and_click_all_catalog()
             self.assert_url("https://afinabags.ru/catalog/")
-            self.get_screenshot()
+            # self.get_screenshot()
             Logger.add_end_step(url=self.driver.current_url, method="select_catalogs")
 
 

@@ -89,5 +89,5 @@ class Catalog_page(Base):
             self.click_select_product_692()
             self.assert_url("https://afinabags.ru/catalog/sumki_i_ryukzaki/model-692/")
             self.assert_word(self.get_mail_word(), "Модель 692")
-            self.get_screenshot()
+            # self.get_screenshot()
             Logger.add_end_step(url=self.driver.current_url, method="select_products_692")

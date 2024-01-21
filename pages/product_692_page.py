@@ -53,6 +53,6 @@ class Product_692_page(Base):
             self.scroll_checkout_button()
             self.click_checkout_button()
             self.assert_url("https://afinabags.ru/order/")
-            self.get_screenshot()
+            # self.get_screenshot()
             Logger.add_end_step(url=self.driver.current_url, method="cart_and_checkout_products_692")
 

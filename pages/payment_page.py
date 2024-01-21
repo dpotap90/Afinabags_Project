@@ -129,7 +129,7 @@ class Order_cart_page(Base):
             self.input_house_name()
             self.scroll_to_payment_method_1_and_select()
             # self.click_order_button()
-            self.get_screenshot()
+            # self.get_screenshot()
             "cart_and_checkout_products_692"
             Logger.add_end_step(url=self.driver.current_url, method="cart_and_checkout_products_692")
 
