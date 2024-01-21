@@ -9,11 +9,6 @@ from utilities.logger import Logger
 
 class Order_cart_page(Base):
 
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
-
-
     # Locators
 
     first_name = "//input[@name='ORDER_PROP_1']"
@@ -64,44 +59,53 @@ class Order_cart_page(Base):
     # Actions
 
     def input_first_name(self, first_name):
+        """Получить элемент поля Имя."""
         self.get_first_name().send_keys(first_name)
         print("Input first name")
 
     def input_last_name(self, last_name):
+        """Получить элемент поля Фамилия."""
         self.get_last_name().send_keys(last_name)
         print("Input last name")
 
     def input_email_name(self, email_name):
+        """Получить элемент поля Почта."""
         self.get_email_name().send_keys(email_name)
         print("Input email_name")
 
     def input_phone_number(self, phone_number):
+        """Получить элемент поля Телефон."""
         self.get_phone_number().send_keys(phone_number)
         print("Input phone_number")
 
     def select_city_1(self):
+        """Выполнить выбор города 1'"""
         self.get_city_1().click()
         print("Select city_1")
 
     def scroll_to_delivery_1_and_select(self):
+        """Прокрутить страницу до элемента  и выбор способа доставки"""
         action = ActionChains(self.driver)
         action.move_to_element(self.get_delivery_courier()).perform()
         self.get_delivery_courier().click()
         print("Select delivery_courier")
 
     def input_street_name(self):
+        """Ввод данныз в поле Улица"""
         # action = ActionChains(self.driver)
         # action.move_to_element(self.get_payment_method_1()).perform()
         self.get_street_name().send_keys("test")
         print("Input_house_name")
 
     def input_house_name(self):
+        """Ввод данныз в поле Дом"""
         # action = ActionChains(self.driver)
         # action.move_to_element(self.get_payment_method_1()).perform()
         self.get_house_name().send_keys("test")
         print("Input_house_name")
 
     def scroll_to_payment_method_1_and_select(self):
+        """Прокрутить страницу до элемента  и выбор способа оплаты 1"""
         action = ActionChains(self.driver)
         action.move_to_element(self.get_payment_method_1()).perform()
         self.get_payment_method_1().click()
@@ -109,12 +113,14 @@ class Order_cart_page(Base):
 
 
     # def click_order_button(self):
+    """Выполнить клик по кнопке 'Оформить заказ'"""
     #     self.get_order_button().click()
     #     print("Click order_button")
 
 
     # Methods
     def order_cart(self):
+        """Выполнить действия по оформлению заказа."""
         with allure.step("order_cart"):
             Logger.add_start_step(method="cart_and_checkout_products_692")
             self.get_current_url()

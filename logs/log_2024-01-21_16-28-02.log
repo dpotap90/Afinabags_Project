@@ -1,10 +1,10 @@
 
 -----
 Test: tests/test_buy_product.py::test_buy_product (call)
-Start time: 2024-01-20 18:58:28.355953
+Start time: 2024-01-21 16:28:07.759169
 Start name method: select_catalogs
 
-End time: 2024-01-20 18:58:41.223575
+End time: 2024-01-21 16:28:15.147438
 End name method: select_catalogs
 URL: https://afinabags.ru/catalog/
 
@@ -12,10 +12,10 @@ URL: https://afinabags.ru/catalog/
 
 -----
 Test: tests/test_buy_product.py::test_buy_product (call)
-Start time: 2024-01-20 18:58:41.224651
+Start time: 2024-01-21 16:28:15.147438
 Start name method: select_products_692
 
-End time: 2024-01-20 18:58:53.280388
+End time: 2024-01-21 16:28:20.918445
 End name method: select_products_692
 URL: https://afinabags.ru/catalog/sumki_i_ryukzaki/model-692/
 
@@ -23,10 +23,10 @@ URL: https://afinabags.ru/catalog/sumki_i_ryukzaki/model-692/
 
 -----
 Test: tests/test_buy_product.py::test_buy_product (call)
-Start time: 2024-01-20 18:58:53.282399
+Start time: 2024-01-21 16:28:20.918445
 Start name method: cart_and_checkout_products_692
 
-End time: 2024-01-20 18:58:58.416480
+End time: 2024-01-21 16:28:24.775834
 End name method: cart_and_checkout_products_692
 URL: https://afinabags.ru/order/
 
@@ -34,10 +34,10 @@ URL: https://afinabags.ru/order/
 
 -----
 Test: tests/test_buy_product.py::test_buy_product (call)
-Start time: 2024-01-20 18:58:58.417483
+Start time: 2024-01-21 16:28:24.775834
 Start name method: cart_and_checkout_products_692
 
-End time: 2024-01-20 18:59:01.978312
+End time: 2024-01-21 16:28:26.884390
 End name method: cart_and_checkout_products_692
 URL: https://afinabags.ru/order/
 

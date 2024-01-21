@@ -1,16 +1,11 @@
 import allure
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
 from pages.catalog_page import Catalog_page
 from pages.main_page import Main_page
 from pages.payment_page import Order_cart_page
 from pages.product_692_page import Product_692_page
 
 @allure.description("Test buy product")
-def test_buy_product(set_up):
-    service = Service(executable_path=ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service)
+def test_buy_product(set_up, screenshot_allure, driver):
 
     print("Start Test 1")
 
