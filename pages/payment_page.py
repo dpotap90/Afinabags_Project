@@ -99,12 +99,12 @@ class Order_cart_page(Base):
         print("Select delivery_courier")
 
     def input_street_name(self, street_name):
-        """Ввод данныз в поле Улица"""
+        """Ввод данных в поле Улица"""
         self.get_street_name().send_keys(street_name)
         print("Input_house_name")
 
     def input_house_name(self, house_name):
-        """Ввод данныз в поле Дом"""
+        """Ввод данных в поле Дом"""
         self.get_house_name().send_keys(house_name)
         print("Input_house_name")
 
