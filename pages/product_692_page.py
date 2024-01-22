@@ -1,7 +1,5 @@
 import allure
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from base.base_class import Base
 from utilities.logger import Logger
 
@@ -9,6 +7,7 @@ from utilities.logger import Logger
 class Product_692_page(Base):
 
     """Страница продукта 692 на Afinabags.ru"""
+
     url = "https://afinabags.ru/"
 
     # Locators
@@ -19,13 +18,14 @@ class Product_692_page(Base):
 
     # Getters
 
+
     def get_cart(self):
         """Получить элемент кнопки 'В корзину'."""
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.cart)))
+        return self.element_is_clickable((By.XPATH, self.cart))
 
     def get_checkout_button(self):
         """Получить элемент кнопки 'Оформить заказ'."""
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.checkout_button)))
+        return self.element_is_clickable((By.XPATH, self.checkout_button))
 
 
     # Actions

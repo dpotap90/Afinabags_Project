@@ -32,5 +32,5 @@ def screenshot_allure(request, driver):
 # Генерации тестовых данных
 @pytest.fixture(scope='function')
 def faker_instance():
-    fake = faker.Faker()
+    fake = faker.Faker("ru_RU")
     return fake

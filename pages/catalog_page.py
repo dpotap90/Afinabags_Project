@@ -1,8 +1,5 @@
-import time
 import allure
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from base.base_class import Base
 from utilities.logger import Logger
@@ -24,27 +21,27 @@ class Catalog_page(Base):
     # Getters
 
     def get_filter_open(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.filter_open)))
+        return self.element_is_clickable((By.XPATH, self.filter_open))
 
     def get_filter_price_open(self):
         """Получить элемент 'Открыть фильтр'."""
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.filter_price_open)))
+        return self.element_is_clickable((By.XPATH, self.filter_price_open))
 
     def get_slider_price(self):
         """Получить элемент слайдера цены."""
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.slider_price)))
+        return self.element_is_clickable((By.XPATH, self.slider_price))
 
     def get_button_slider_price(self):
         """Получить элемент кнопки слайдера цены."""
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.button_slider_price)))
+        return self.element_is_clickable((By.XPATH, self.button_slider_price))
 
     def get_select_product_692(self):
         """Получить элемент продукта 692"""
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_product_692)))
+        return self.element_is_clickable((By.XPATH, self.select_product_692))
 
     def get_mail_word(self):
         """Получить элемент заголовка с информацией о продукте."""
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.mail_word)))
+        return self.element_is_clickable((By.XPATH, self.mail_word))
 
     # Actions
 
@@ -60,9 +57,8 @@ class Catalog_page(Base):
 
     def slider_prices(self):
         """Переместить слайдер цены."""
-        action = ActionChains(self.driver)
-        action.click_and_hold(self.get_slider_price()).move_by_offset(20, 0).release().perform()
-        print("Click slider_prices" )
+        self.action_click_and_hold(self.get_slider_price(), 20, 0)
+        print("Click slider_prices")
 
     def button_slider_prices(self):
         """Выполнить клик по кнопке 'Применить'"""

@@ -5,7 +5,7 @@ from pages.payment_page import Order_cart_page
 from pages.product_692_page import Product_692_page
 
 @allure.description("Test buy product")
-def test_buy_product(set_up, screenshot_allure, driver):
+def test_buy_product(set_up, screenshot_allure, driver,):
 
     print("Start Test 1")
 

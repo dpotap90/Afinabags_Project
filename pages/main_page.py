@@ -1,8 +1,5 @@
 import allure
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
 from base.base_class import Base
 from utilities.logger import Logger
 
@@ -13,24 +10,23 @@ class Main_page(Base):
 
 
     # Locators
-    catalog_menu = "//header/div[2]/ul/li[1]/a"
+    catalog_menu = ("//header/div[2]/ul/li[1]/a")
     all_catalog = "//a[text()='Посмотреть все']"
 
     # Getters
 
     def get_hover_over_element_catalog(self):
         """Получить элемент 'Каталог' для наведения."""
-        return WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.XPATH, self.catalog_menu)))
+        return self.element_is_visible((By.XPATH, self.catalog_menu))
 
     def get_select_all_catalog(self):
         """Получить элемент 'Посмотреть все' для выбора."""
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.all_catalog)))
+        return self.element_is_clickable((By.XPATH, self.all_catalog))
 
     # Actions
     def hover_over_and_click_all_catalog(self):
         """Навести курсор на 'Каталог' и кликнуть по 'Посмотреть все'."""
-        action = ActionChains(self.driver)
-        action.move_to_element(self.get_hover_over_element_catalog()).perform()
+        self.action_move_to_element(self.get_hover_over_element_catalog())
         self.get_select_all_catalog().click()
         print("Click select_all_catalog")
 
