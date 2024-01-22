@@ -1,6 +1,7 @@
 import datetime
-
-from selenium.webdriver import ActionChains
+from selenium.common import NoSuchElementException
+from selenium.webdriver import ActionChains, Keys
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 class Base():
@@ -62,3 +63,38 @@ class Base():
         get_url = self.driver.current_url
         assert get_url == result
         print("Good value url")
+
+    """Метод Проверяет, содержится ли ожидаемый текст на текущей странице"""
+    def assert_text_on_page(self, expected_text):
+        try:
+            element = self.driver.find_element(By.XPATH, f"//*[contains(text(), '{expected_text}')]") #Текст, который ожидается увидеть на странице
+            actual_text = element.text
+            assert expected_text in actual_text, f"Текст '{expected_text}' не найден на странице"
+            print(f"Текст '{expected_text}' найден на странице")
+        except NoSuchElementException:
+            print(f"Элемент с текстом '{expected_text}' не найден на странице")
+
+    """Кликнуть по элементу"""
+    def click_element(self, xpath):
+        element = self.driver.find_element(By.XPATH, xpath)
+        element.click()
+        print(f"Clicked element with XPath '{xpath}'.")
+
+    """Ввести текст в поле ввода"""
+    def input_text(self, xpath, text):
+        element = self.driver.find_element(By.XPATH, xpath)
+        element.clear()
+        element.send_keys(text)
+        print(f"Entered text '{text}' into element with XPath '{xpath}'.")
+
+    """Очистить текст из элемента"""
+    def clear_element(self, xpath):
+        element = self.driver.find_element(By.XPATH, xpath)
+        element.clear()
+        print(f"Cleared text from element with XPath '{xpath}'.")
+
+    """Нажать клавишу "Enter" на элементе"""
+    def press_enter_key(self, xpath):
+        element = self.driver.find_element(By.XPATH, xpath)
+        element.send_keys(Keys.ENTER)
+        print(f"Pressed 'Enter' key on element with XPath '{xpath}'.")

@@ -3,9 +3,10 @@ from pages.catalog_page import Catalog_page
 from pages.main_page import Main_page
 from pages.payment_page import Order_cart_page
 from pages.product_692_page import Product_692_page
+from base.base_class import Base
 
 @allure.description("Test buy product")
-def test_buy_product(set_up, screenshot_allure, driver,):
+def test_buy_product(set_up, screenshot_allure, driver):
 
     print("Start Test 1")
 
@@ -25,6 +26,10 @@ def test_buy_product(set_up, screenshot_allure, driver,):
     p = Order_cart_page(driver)
     p.order_cart()
 
+    """Assert order success"""
+    bp = Base(driver)
+    bp.assert_text_on_page("Ваш заказ")
+    bp.assert_text_on_page("Оплата при получении")
 
     print("Finish test 1")
 

@@ -1,3 +1,4 @@
+import time
 import allure
 from selenium.webdriver.common.by import By
 from base.base_class import Base
@@ -16,9 +17,9 @@ class Order_cart_page(Base):
     city_1 = "//div[@class='big-city '][1]"
     delivery_courier = "//label[contains(@class,'checkout-content')][1]"
     payment_method_1 = "//div[text()='Оплата при получении']"
-    street_name = "//input[@name='ORDER_PROP_17']"
+    street_name = "//input[@id='street']"
     house_name = "//input[@name='ORDER_PROP_18']"
-    # order_button = "//a/button[@type='submit']"
+    order_button = "//a/button[@type='submit']"
 
 
     # Getters
@@ -60,30 +61,30 @@ class Order_cart_page(Base):
         return self.element_is_clickable((By.XPATH, self.house_name))
 
 
-    # def get_order_button(self):
-    #     """Получить элемент для кнопки оформления заказа."""
-    #     return self.element_is_clickable((By.XPATH, self.order_button))
+    def get_order_button(self):
+        """Получить элемент для кнопки оформления заказа."""
+        return self.element_is_clickable((By.XPATH, self.order_button))
 
     # Actions
 
     def input_first_name(self, first_name):
-        """Получить элемент поля Имя."""
-        self.get_first_name().send_keys(self.first_name)
+        """Ввод данных для поля Имя."""
+        self.get_first_name().send_keys(first_name)
         print("Input first name")
 
     def input_last_name(self, last_name):
-        """Получить элемент поля Фамилия."""
-        self.get_last_name().send_keys(self.last_name)
+        """Ввод данных для поля Фамилия."""
+        self.get_last_name().send_keys(last_name)
         print("Input last name")
 
     def input_email_name(self, email_name):
-        """Получить элемент поля Почта."""
-        self.get_email_name().send_keys(self.email_name)
+        """Ввод данных для поля Почта."""
+        self.get_email_name().send_keys(email_name)
         print("Input email_name")
 
     def input_phone_number(self, phone_number):
-        """Получить элемент поля Телефон."""
-        self.get_phone_number().send_keys(self.phone_number)
+        """Ввод данных для поля Телефон."""
+        self.get_phone_number().send_keys(phone_number)
         print("Input phone_number")
 
     def select_city_1(self):
@@ -97,14 +98,14 @@ class Order_cart_page(Base):
         self.get_delivery_courier().click()
         print("Select delivery_courier")
 
-    def input_street_name(self):
+    def input_street_name(self, street_name):
         """Ввод данныз в поле Улица"""
-        self.get_street_name().send_keys(self.street_name)
+        self.get_street_name().send_keys(street_name)
         print("Input_house_name")
 
-    def input_house_name(self):
+    def input_house_name(self, house_name):
         """Ввод данныз в поле Дом"""
-        self.get_house_name().send_keys(self.house_name)
+        self.get_house_name().send_keys(house_name)
         print("Input_house_name")
 
     def scroll_to_payment_method_1_and_select(self):
@@ -114,10 +115,10 @@ class Order_cart_page(Base):
         print("Select payment_method")
 
 
-    # def click_order_button(self):
-    """Выполнить клик по кнопке 'Оформить заказ'"""
-    #     self.get_order_button().click()
-    #     print("Click order_button")
+    def click_order_button(self):
+        """Выполнить клик по кнопке 'Оформить заказ'"""
+        self.get_order_button().click()
+        print("Click order_button")
 
 
     # Methods
@@ -133,10 +134,12 @@ class Order_cart_page(Base):
             self.input_phone_number("0000000000")
             self.select_city_1()
             self.scroll_to_delivery_1_and_select()
-            self.input_street_name()
-            self.input_house_name()
+            self.input_street_name("test_street")
+            self.input_house_name("test_home")
             self.scroll_to_payment_method_1_and_select()
-            # self.click_order_button()
+            self.click_order_button()
+            self.get_current_url()
+            self.assert_url("https://afinabags.ru/order/success/")
             # self.get_screenshot()
             Logger.add_end_step(url=self.driver.current_url, method="cart_and_checkout_products_692")
 

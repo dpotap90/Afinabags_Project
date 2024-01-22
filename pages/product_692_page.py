@@ -18,7 +18,6 @@ class Product_692_page(Base):
 
     # Getters
 
-
     def get_cart(self):
         """Получить элемент кнопки 'В корзину'."""
         return self.element_is_clickable((By.XPATH, self.cart))
