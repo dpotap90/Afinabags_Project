@@ -104,3 +104,7 @@ class Base():
         element = self.driver.find_element(By.XPATH, xpath)
         element.send_keys(Keys.ENTER)
         print(f"Pressed 'Enter' key on element with XPath '{xpath}'.")
+
+    def refresh_page(self):
+        """Обновить текущую страницу."""
+        self.driver.refresh()

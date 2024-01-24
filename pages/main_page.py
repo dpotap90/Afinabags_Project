@@ -5,10 +5,9 @@ from base.base_class import Base
 from utilities.logger import Logger
 
 
-class Main_page(Base):
+class MainPage(Base):
     """Страница главной страницы Afinabags.ru"""
     url = "https://afinabags.ru/"
-
 
     # Locators
     catalog_menu = "//header/div[2]/ul/li[1]/a"
@@ -17,7 +16,7 @@ class Main_page(Base):
     button_user_mail = "//button[contains(@class, 'js-open-email')]"
     email_user = "//input[@id='email']"
     password_user = "//input[@id='pass']"
-    button_user_check = "//div[contains(@class, 'header-top__user')]"
+    button_user_check = "//button[contains(@class, 'email-auth')]"
 
     # Getters
 
@@ -49,7 +48,6 @@ class Main_page(Base):
         """Получить кнопку "Проверить пользователя"""
         return self.element_is_clickable((By.XPATH, self.button_user_check))
 
-
     # Actions
     def hover_over_and_click_all_catalog(self):
         """Навести курсор на 'Каталог' и кликнуть по 'Посмотреть все'."""
@@ -63,7 +61,7 @@ class Main_page(Base):
         print("Click open_user")
 
     def click_button_user_mail(self):
-        """Клик по кнопке "Открыть почту"""
+        """Клик по кнопке "Войти по почте"""
         self.get_button_user_mail().click()
         print("Click button_user_mail")
 
@@ -88,23 +86,21 @@ class Main_page(Base):
         """Выполнить действия по выбору каталога."""
         with allure.step("select_catalogs"):
             Logger.add_start_step(method="select_catalogs")
-            self.load_page_and_maximize(self.url)
-            self.get_current_url()
-            self.hover_over_and_click_all_catalog()
-            self.assert_url("https://afinabags.ru/catalog/")
+            self.load_page_and_maximize(self.url)  # Загрузить страницу и максимизировать окно браузера
+            self.hover_over_and_click_all_catalog()  # Навести курсор на 'Каталог' и кликнуть по 'Посмотреть все'
+            self.assert_url("https://afinabags.ru/catalog/")  # Проверяем URL
             Logger.add_end_step(url=self.driver.current_url, method="select_catalogs")
-
 
     def authorization(self):
         """Авторизация пользователя"""
         with allure.step("authorization"):
             Logger.add_start_step(method="authorization")
-            self.load_page_and_maximize(self.url)
-            self.click_open_user()
-            self.input_email_user("123@test.ru")
-            self.input_password_user("test")
-            self.click_button_user_check()
-            self.get_current_url()
-            self.assert_url("https://afinabags.ru/personal/")
-            self.assert_text_on_page("Личный кабинет")
+            self.load_page_and_maximize(self.url)  # Загрузить страницу и максимизировать окно браузера
+            self.click_open_user()  # Клик по элементу открытия меню пользователя
+            self.click_button_user_mail()  # Клик по кнопке "Войти по почте"
+            self.input_email_user("123@test.ru")  # Ввод электронной почты пользователя
+            self.input_password_user("testovich")  # Ввод пароля пользователя
+            self.click_button_user_check()  # Клик по кнопке "Войти"
+            self.assert_url(self.url + "personal/")  # Проверяем URL
+            self.assert_text_on_page("Личный кабинет") # Проверка отображения текста на странице
             Logger.add_end_step(url=self.driver.current_url, method="authorization")

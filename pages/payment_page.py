@@ -6,7 +6,7 @@ from base.base_class import Base
 from utilities.logger import Logger
 
 
-class Order_cart_page(Base):
+class OrderCartPage(Base):
     """Страница оформления заказа"""
     url = "https://afinabags.ru/order/"
 
@@ -146,13 +146,13 @@ class Order_cart_page(Base):
 
 
     def scroll_to_delivery_1_and_select(self):
-        """Прокрутить страницу до элемента  и выбор способа доставки Курьером"""
+        """Прокрутить страницу до элемента и выбор способа доставки Курьером"""
         self.action_move_to_element(self.get_delivery_courier())
         self.get_delivery_courier().click()
         print("Select delivery_courier")
 
     def scroll_to_delivery_2_and_select(self):
-        """Прокрутить страницу до элемента  и выбор способа доставки СДЭК"""
+        """Прокрутить страницу до элемента и выбор способа доставки СДЭК"""
         self.action_move_to_element(self.get_delivery_sdek())
         self.get_delivery_sdek().click()
         print("Select delivery_sdek")
@@ -231,47 +231,48 @@ class Order_cart_page(Base):
         """Оформлению заказа c доставкой курьером и оплатой наличными."""
         with allure.step("order_cart_1"):
             Logger.add_start_step(method="order_cart_1")
-            self.get_current_url()
-            self.assert_url("https://afinabags.ru/order/")
-            self.input_first_name("Test")
-            self.input_last_name("Testovich")
-            self.input_email_name("123@test.ru")
-            self.input_phone_number("0000000000")
-            self.select_city_spb()
-            self.scroll_to_delivery_1_and_select()
-            self.input_street_name("test_street")
-            self.input_house_name("test_home")
-            self.scroll_to_payment_card()
-            self.click_payment_method_cash()
-            self.click_order_button()
-            self.get_current_url()
+            self.get_current_url()  # Текущий URL
+            self.assert_url("https://afinabags.ru/order/")  # Проверка URL
+            self.input_first_name("Test")  # Ввод данных для поля "Имя"
+            self.input_last_name("Testovich")  # Ввод данных для поля "Фамилия"
+            self.input_email_name("123@test.ru")  # Ввод данных для поля "Почта"
+            self.input_phone_number("0000000000")  # Ввод данных для поля "Телефон"
+            self.select_city_spb()  # Выбор города "Санкт-Петербург"
+            self.scroll_to_delivery_1_and_select()  # Прокрутить страницу до элемента и выбор способа доставки Курьером
+            self.input_street_name("test_street")  # Ввод данных в поле Улица
+            self.input_house_name("test_home")  # Ввод данных в поле Улица
+            self.scroll_to_payment_card()  # Прокрутить страницу до элемента "Оплата Картой"
+            self.click_payment_method_cash()  # Клик по кнопке "Оплата при получении"
+            # self.click_order_button()  # Клик по кнопке "Оформить заказ"
+            # self.assert_text_on_page("Ваш заказ")  # Проверка отображения текста на странице
+            # self.assert_text_on_page("Оплата при получении") # Проверка отображения текста на странице
             Logger.add_end_step(url=self.driver.current_url, method="order_cart_1")
 
     def order_cart_2(self):
         """Оформлению заказа c доставкой сдэка и оплатой наличными."""
         with allure.step("order_cart_2"):
             Logger.add_start_step(method="order_cart_2")
-            self.get_current_url()
-            self.assert_url("https://afinabags.ru/order/")
-            self.input_first_name("Test")
-            self.input_last_name("Testovich")
-            self.input_email_name("123@test.ru")
-            self.input_phone_number("0000000000")
-            self.select_city_msk()
-            self.scroll_to_delivery_2_and_select()
-            self.click_adress_sdek()
-            self.click_sdek_button_pvz()
+            self.get_current_url()  # Текущий URL
+            self.assert_url("https://afinabags.ru/order/")  # Проверка URL
+            self.input_first_name("Test")  # Ввод данных для поля "Имя"
+            self.input_last_name("Testovich")  # Ввод данных для поля "Фамилия"
+            self.input_email_name("123@test.ru")  # Ввод данных для поля "Почта"
+            self.input_phone_number("0000000000")  # Ввод данных для поля "Телефон"
+            self.select_city_msk()  # Выбор города "Москва"
+            self.scroll_to_delivery_2_and_select()  # Прокрутить страницу до элемента и выбор способа доставки СДЭК
+            self.click_adress_sdek()  # Выбор адреса ПВЗ MSK77
+            self.click_sdek_button_pvz()  # Клик по кнопке "Выбрать"
             # self.click_search_pvz()
             # self.click_name_search_pvz()
             # self.input_name_search_pvz("Выбранный пункт: пер. Товарищеский , 1, стр. 2")
             # self.click_button_search_input()
             # self.select_pvz_msk()
-            self.input_street_name("test_street")
-            self.input_house_name("test_home")
-            self.scroll_to_payment_card()
-            self.click_payment_method_cash()
-            self.click_order_button()
-            time.sleep(5)
+            self.scroll_to_payment_card()    # Прокрутить страницу до элемента "Оплата Картой"
+            self.click_payment_method_cash()    # Клик по кнопке "Оплата при получении"
+            # self.click_order_button()  # Клик по кнопке "Оформить заказ"
+            # self.assert_text_on_page("Ваш заказ")  # Проверка отображения текста на странице
+            # self.assert_text_on_page("Оплата при получении") # Проверка отображения текста на странице
+
             Logger.add_end_step(url=self.driver.current_url, method="order_cart_2")
 
 

@@ -5,7 +5,7 @@ from base.base_class import Base
 from utilities.logger import Logger
 
 
-class Catalog_page(Base):
+class CatalogPage(Base):
 
     """Страница каталога на Afinabags.ru"""
     url = "https://afinabags.ru/catalog/"
@@ -56,7 +56,7 @@ class Catalog_page(Base):
         print("Click filter_price_open")
 
     def slider_prices(self):
-        """Переместить слайдер цены."""
+        """Клик и Перемещение слайдера цены."""
         self.action_click_and_hold(self.get_slider_price(), 20, 0)
         print("Click slider_prices")
 
@@ -84,14 +84,13 @@ class Catalog_page(Base):
         """Выполнить действия для выбора продукта 692"""
         with allure.step("select_products_692"):
             Logger.add_start_step(method="select_products_692")
-            self.get_current_url()
-            self.click_filter_open()
-            self.click_filter_price_open()
-            self.slider_prices()
-            self.button_slider_prices()
-            self.scroll_to_product_692()
-            self.click_select_product_692()
-            self.assert_url("https://afinabags.ru/catalog/sumki_i_ryukzaki/model-692/")
-            self.assert_word(self.get_mail_word(), "Модель 692")
-            # self.get_screenshot()
+            self.click_filter_open()  # Клик по элементу фильтра
+            self.click_filter_price_open()  # Выполнить клик по слайдеру цены
+            self.slider_prices()  # Клик и Перемещение слайдера цены
+            self.button_slider_prices()  # Клик по кнопке 'Применить'
+            self.scroll_to_product_692()  # Прокрутить страницу до элемента продукта 692
+            self.click_select_product_692()  # Выбор продукта 692
+            self.assert_url("https://afinabags.ru/catalog/sumki_i_ryukzaki/model-692/")  # Проверка URL
+            self.assert_word(self.get_mail_word(), "Модель 692")  # Проверка отображение текста "Модель 692"
+            # self.get_screenshot()  # Скриншот страницы
             Logger.add_end_step(url=self.driver.current_url, method="select_products_692")

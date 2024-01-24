@@ -8,9 +8,9 @@ from selenium.webdriver.chrome.service import Service
 # Начало и конец теста
 @pytest.fixture()
 def set_up():
-    print("Start test")
+    print(" Start test")
     yield
-    print("Finish test")
+    print(" Finish test")
 
 # Запуск браузера
 @pytest.fixture(scope='function')

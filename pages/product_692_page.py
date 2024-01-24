@@ -4,17 +4,15 @@ from base.base_class import Base
 from utilities.logger import Logger
 
 
-class Product_692_page(Base):
+class Product692Page(Base):
 
     """Страница продукта 692 на Afinabags.ru"""
-
     url = "https://afinabags.ru/catalog/sumki_i_ryukzaki/model-692/"
 
     # Locators
 
     cart = "//button[@class='item-card__control-btn-cart']"
     checkout_button = "//a[contains(@class, 'item-card__control-btn-cart-color')]"
-
 
     # Getters
 
@@ -49,11 +47,11 @@ class Product_692_page(Base):
         """Выполнить действия по добавлению продукта в корзину и оформлению заказа."""
         with allure.step("cart_and_checkout_products_692"):
             Logger.add_start_step(method="cart_and_checkout_products_692")
-            self.get_current_url()
-            self.click_cart()
-            self.scroll_checkout_button()
-            self.click_checkout_button()
-            self.assert_url("https://afinabags.ru/order/")
-            # self.get_screenshot()
+            self.get_current_url()  # Текущий URL
+            self.click_cart()  # Клик по элементу 'Добавить в корзину'"
+            self.scroll_checkout_button()  # Прокрутить страницу до элемента
+            self.click_checkout_button()  # Клик по элементу 'Перейти в корзину
+            self.assert_url("https://afinabags.ru/order/")  # Проверка URL
+            # self.get_screenshot()  # Скриншот страницы
             Logger.add_end_step(url=self.driver.current_url, method="cart_and_checkout_products_692")
 
