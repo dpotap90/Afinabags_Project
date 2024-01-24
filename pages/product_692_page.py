@@ -8,7 +8,7 @@ class Product_692_page(Base):
 
     """Страница продукта 692 на Afinabags.ru"""
 
-    url = "https://afinabags.ru/"
+    url = "https://afinabags.ru/catalog/sumki_i_ryukzaki/model-692/"
 
     # Locators
 
@@ -25,7 +25,6 @@ class Product_692_page(Base):
     def get_checkout_button(self):
         """Получить элемент кнопки 'Оформить заказ'."""
         return self.element_is_clickable((By.XPATH, self.checkout_button))
-
 
     # Actions
 

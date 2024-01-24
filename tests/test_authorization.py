@@ -5,12 +5,12 @@ from pages.payment_page import Order_cart_page
 from pages.product_692_page import Product_692_page
 from base.base_class import Base
 
-@allure.description("Test_authorization")
+@allure.description("Tes authorization")
 def test_authorization(set_up, screenshot_allure, driver):
 
-    print("Start Test_authorization")
+    print("Start Test authorization")
 
     mp = Main_page(driver)
     mp.authorization()
 
-    print("Finish test 1")
+    print("Finish Test authorization")

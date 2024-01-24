@@ -14,7 +14,7 @@ class Main_page(Base):
     catalog_menu = "//header/div[2]/ul/li[1]/a"
     all_catalog = "//a[text()='Посмотреть все']"
     open_user = "//div[@class='header-top__control-item header-top__user']"
-    button_user_mail = "//button[text()='Войти по почте']"
+    button_user_mail = "//button[contains(@class, 'js-open-email')]"
     email_user = "//input[@id='email']"
     password_user = "//input[@id='pass']"
     button_user_check = "//div[contains(@class, 'header-top__user')]"
@@ -30,18 +30,23 @@ class Main_page(Base):
         return self.element_is_clickable((By.XPATH, self.all_catalog))
 
     def get_open_user(self):
+        """Получить элемент открытия меню пользователя"""
         return self.element_is_clickable((By.XPATH, self.open_user))
 
     def get_button_user_mail(self):
+        """Получить кнопку "Открыть почту"""
         return self.element_is_clickable((By.XPATH, self.button_user_mail))
 
     def get_email_user(self):
+        """Получить поле ввода электронной почты пользователя"""
         return self.element_is_clickable((By.XPATH, self.email_user))
 
     def get_password_user(self):
+        """Получить поле ввода пароля пользователя"""
         return self.element_is_clickable((By.XPATH, self.password_user))
 
     def get_button_user_check(self):
+        """Получить кнопку "Проверить пользователя"""
         return self.element_is_clickable((By.XPATH, self.button_user_check))
 
 
@@ -53,22 +58,27 @@ class Main_page(Base):
         print("Click select_all_catalog")
 
     def click_open_user(self):
+        """Клик по элементу открытия меню пользователя"""
         self.get_open_user().click()
         print("Click open_user")
 
     def click_button_user_mail(self):
+        """Клик по кнопке "Открыть почту"""
         self.get_button_user_mail().click()
         print("Click button_user_mail")
 
     def input_email_user(self, email_user):
+        """Ввод электронной почты пользователя"""
         self.get_email_user().send_keys(email_user)
         print("Input email_user")
 
     def input_password_user(self, password_user):
+        """Ввод пароля пользователя"""
         self.get_password_user().send_keys(password_user)
         print("Input email_user")
 
     def click_button_user_check(self):
+        """Клик по кнопке "Войти"""
         self.get_button_user_check().click()
         print("Click button_user_check")
 
@@ -78,21 +88,18 @@ class Main_page(Base):
         """Выполнить действия по выбору каталога."""
         with allure.step("select_catalogs"):
             Logger.add_start_step(method="select_catalogs")
-            self.driver.get(self.url)
-            self.driver.maximize_window()
+            self.load_page_and_maximize(self.url)
             self.get_current_url()
             self.hover_over_and_click_all_catalog()
             self.assert_url("https://afinabags.ru/catalog/")
-            # self.get_screenshot()
             Logger.add_end_step(url=self.driver.current_url, method="select_catalogs")
 
 
     def authorization(self):
         """Авторизация пользователя"""
         with allure.step("authorization"):
-            Logger.add_start_step(method="select_catalogs")
-            self.driver.get(self.url)
-            self.driver.maximize_window()
+            Logger.add_start_step(method="authorization")
+            self.load_page_and_maximize(self.url)
             self.click_open_user()
             self.input_email_user("123@test.ru")
             self.input_password_user("test")
@@ -100,3 +107,4 @@ class Main_page(Base):
             self.get_current_url()
             self.assert_url("https://afinabags.ru/personal/")
             self.assert_text_on_page("Личный кабинет")
+            Logger.add_end_step(url=self.driver.current_url, method="authorization")

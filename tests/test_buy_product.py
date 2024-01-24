@@ -24,7 +24,8 @@ def test_buy_product(set_up, screenshot_allure, driver):
 
     """Order cart"""
     p = Order_cart_page(driver)
-    p.order_cart()
+    # p.order_cart_1()
+    # p.order_cart_2()
 
     """Assert order success"""
     bp = Base(driver)

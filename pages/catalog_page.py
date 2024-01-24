@@ -8,7 +8,7 @@ from utilities.logger import Logger
 class Catalog_page(Base):
 
     """Страница каталога на Afinabags.ru"""
-    url = "https://afinabags.ru/"
+    url = "https://afinabags.ru/catalog/"
 
     # Locators
     filter_open = "//div[contains(@class,'js-filter-modal')]"

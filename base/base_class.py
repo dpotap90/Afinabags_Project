@@ -9,6 +9,12 @@ class Base():
     def __init__(self, driver):
         self.driver = driver
 
+
+    def load_page_and_maximize(self, url):
+        """Загрузить страницу и максимизировать окно браузера."""
+        self.driver.get(url)
+        self.driver.maximize_window()
+
     """Method Find a visible element"""
     def element_is_visible(self, locator, timeout=30):
         return WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
@@ -67,7 +73,7 @@ class Base():
     """Метод Проверяет, содержится ли ожидаемый текст на текущей странице"""
     def assert_text_on_page(self, expected_text):
         try:
-            element = self.driver.find_element(By.XPATH, f"//*[contains(text(), '{expected_text}')]") #Текст, который ожидается увидеть на странице
+            element = self.element_is_visible((By.XPATH, f"//*[contains(text(), '{expected_text}')]")) #Текст, который ожидается увидеть на странице
             actual_text = element.text
             assert expected_text in actual_text, f"Текст '{expected_text}' не найден на странице"
             print(f"Текст '{expected_text}' найден на странице")
