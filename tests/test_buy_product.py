@@ -8,9 +8,9 @@ from base.base_class import Base
 @allure.description("Test buy product")
 def test_buy_product(set_up, screenshot_allure, driver):
 
-    print("Start Test 1")
+    print("Start test_buy_product")
 
-    """Catalog open"""
+    """"Catalog open"""
     mp = MainPage(driver)
     mp.select_catalogs()
 
@@ -27,6 +27,5 @@ def test_buy_product(set_up, screenshot_allure, driver):
     p.order_cart_1()
     # p.order_cart_2()
 
-
-    print("Finish test 1")
+    print("Finish test_buy_product")
 

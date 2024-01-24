@@ -87,9 +87,8 @@ class OrderCartPage(Base):
         return self.element_is_clickable((By.XPATH, self.button_search_input))
 
     def get_pvz_msk(self):
-        "Получить пвз МОСКВА из списка"
+        """Получить пвз МОСКВА из списка"""
         return self.element_is_clickable((By.XPATH, self.pvz_msk))
-
 
     def get_payment_method_cash(self):
         """Получить элемент для выбора метода оплаты 'Оплата при получении'."""
@@ -100,32 +99,31 @@ class OrderCartPage(Base):
         return self.element_is_clickable((By.XPATH, self.payment_method_card))
 
     def get_street_name(self):
-        """Получить элемент для поля 'Улица'."""
+        """Получить элемент для поля 'Улица' """
         return self.element_is_clickable((By.XPATH, self.street_name))
 
     def get_house_name(self):
-        """Получить элемент для поля 'Дом'."""
+        """Получить элемент для поля 'Дом' """
         return self.element_is_clickable((By.XPATH, self.house_name))
 
-
     def get_order_button(self):
-        """Получить элемент для кнопки оформления заказа."""
+        """Получить элемент для кнопки оформления заказа"""
         return self.element_is_clickable((By.XPATH, self.order_button))
 
     # Actions
 
     def input_first_name(self, first_name):
-        """Ввод данных для поля Имя."""
+        """Ввод данных для поля Имя"""
         self.get_first_name().send_keys(first_name)
         print("Input first name")
 
     def input_last_name(self, last_name):
-        """Ввод данных для поля Фамилия."""
+        """Ввод данных для поля Фамилия"""
         self.get_last_name().send_keys(last_name)
         print("Input last name")
 
     def input_email_name(self, email_name):
-        """Ввод данных для поля Почта."""
+        """Ввод данных для поля Почта"""
         self.get_email_name().send_keys(email_name)
         print("Input email_name")
 
@@ -135,15 +133,14 @@ class OrderCartPage(Base):
         print("Input phone_number")
 
     def select_city_spb(self):
-        """Выполнить выбор города Санкт-Петербург'"""
+        """Выполнить выбор города 'Санкт-Петербург'"""
         self.get_city_spb().click()
         print("Select city_spb")
 
     def select_city_msk(self):
-        """Выполнить выбор города Москва'"""
+        """Выполнить выбор города 'Москва'"""
         self.get_city_msk().click()
         print("Select city_msk")
-
 
     def scroll_to_delivery_1_and_select(self):
         """Прокрутить страницу до элемента и выбор способа доставки Курьером"""
@@ -162,12 +159,10 @@ class OrderCartPage(Base):
         self.element_is_clickable((By.XPATH, self.adress_sdek))
         print("Select adress_sdek")
 
-
     def click_adress_sdek(self):
         """Клик по адресу Сдэк"""
         self.element_is_clickable((By.XPATH, self.adress_sdek))
         print("Click adress_sdek")
-
 
     def click_sdek_button_pvz(self):
         """Клик по кнопке "Выбрать"""
@@ -199,7 +194,6 @@ class OrderCartPage(Base):
         self.get_pvz_msk().click()
         print("select_pvz_msk")
 
-
     def input_street_name(self, street_name):
         """Ввод данных в поле Улица"""
         self.get_street_name().send_keys(street_name)
@@ -224,7 +218,6 @@ class OrderCartPage(Base):
         """Выполнить клик по кнопке 'Оформить заказ'"""
         self.get_order_button().click()
         print("Click order_button")
-
 
     # Methods
     def order_cart_1(self):

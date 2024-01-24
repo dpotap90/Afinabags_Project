@@ -83,7 +83,7 @@ class MainPage(Base):
     # Methods
 
     def select_catalogs(self):
-        """Выполнить действия по выбору каталога."""
+        """Выполнить действия по выбору каталога и раздела 'Выбрать все'"""
         with allure.step("select_catalogs"):
             Logger.add_start_step(method="select_catalogs")
             self.load_page_and_maximize(self.url)  # Загрузить страницу и максимизировать окно браузера

@@ -9,69 +9,65 @@ class Base():
     def __init__(self, driver):
         self.driver = driver
 
-
     def load_page_and_maximize(self, url):
         """Загрузить страницу и максимизировать окно браузера."""
         self.driver.get(url)
         self.driver.maximize_window()
 
-    """Method Find a visible element"""
     def element_is_visible(self, locator, timeout=30):
+        """Method Find a visible element"""
         return WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
 
-    """Method Find present element"""
     def element_is_present(self, locator, timeout=30):
+        """Method Find present element"""
         return WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located(locator))
 
-    """Method Find clickable elements"""
     def element_is_clickable(self, locator, timeout=30):
+        """Method Find clickable elements"""
         return WebDriverWait(self.driver, timeout).until(EC.element_to_be_clickable(locator))
 
-    """Method Move cursor to element"""
     def action_move_to_element(self, element):
+        """Method Move cursor to element"""
         action = ActionChains(self.driver)
         action.move_to_element(element)
         action.perform()
 
-    """Method Move click_and_hold"""
     def action_click_and_hold(self, element, offset_x, offset_y):
+        """Method Move click_and_hold"""
         action = ActionChains(self.driver)
         action.click_and_hold(element).move_by_offset(offset_x, offset_y).release().perform()
 
-    """Method Move scroll_to_element"""
     def action_scroll_to_element(self, element, offset_x, offset_y):
+        """Method Move scroll_to_element"""
         action = ActionChains(self.driver)
         action.scroll_to_element(element).move_by_offset(offset_x, offset_y).release().perform()
 
-    """Method get current url"""
     def get_current_url(self):
+        """Method get current url"""
         get_url = self.driver.current_url
         print("Current url " + get_url)
 
-    """Method assert word"""
     def assert_word(self, word, result):
+        """Method assert word"""
         value_word = word.text
         assert value_word == result
         print("Good value word")
 
-    """Method Screenshot finish"""
-
     def get_screenshot(self, ):
+        """Method Screenshot finish"""
         now_date = datetime.datetime.utcnow().strftime("%Y.%m.%d.%H.%M.%S")  # Дата и время в настоящий момент
         name_screenshot = 'screenshot ' + now_date + '.png'
         self.driver.save_screenshot('.\\screen\\' + name_screenshot)  # Делаем Скриншот в папку
         print('Screen good')
 
-
-    """Method assert url"""
-
     def assert_url(self, result):
+        """Method assert url"""
         get_url = self.driver.current_url
         assert get_url == result
         print("Good value url")
 
-    """Метод Проверяет, содержится ли ожидаемый текст на текущей странице"""
     def assert_text_on_page(self, expected_text):
+        """Метод Проверяет, содержится ли ожидаемый текст на текущей странице"""
         try:
             element = self.element_is_visible((By.XPATH, f"//*[contains(text(), '{expected_text}')]")) #Текст, который ожидается увидеть на странице
             actual_text = element.text
@@ -80,27 +76,27 @@ class Base():
         except NoSuchElementException:
             print(f"Элемент с текстом '{expected_text}' не найден на странице")
 
-    """Кликнуть по элементу"""
     def click_element(self, xpath):
+        """Кликнуть по элементу"""
         element = self.driver.find_element(By.XPATH, xpath)
         element.click()
         print(f"Clicked element with XPath '{xpath}'.")
 
-    """Ввести текст в поле ввода"""
     def input_text(self, xpath, text):
+        """Ввести текст в поле ввода"""
         element = self.driver.find_element(By.XPATH, xpath)
         element.clear()
         element.send_keys(text)
         print(f"Entered text '{text}' into element with XPath '{xpath}'.")
 
-    """Очистить текст из элемента"""
     def clear_element(self, xpath):
+        """Очистить текст из элемента"""
         element = self.driver.find_element(By.XPATH, xpath)
         element.clear()
         print(f"Cleared text from element with XPath '{xpath}'.")
 
-    """Нажать клавишу "Enter" на элементе"""
     def press_enter_key(self, xpath):
+        """Нажать клавишу "Enter" на элементе"""
         element = self.driver.find_element(By.XPATH, xpath)
         element.send_keys(Keys.ENTER)
         print(f"Pressed 'Enter' key on element with XPath '{xpath}'.")
@@ -108,3 +104,4 @@ class Base():
     def refresh_page(self):
         """Обновить текущую страницу."""
         self.driver.refresh()
+        print("Refresh_page")
