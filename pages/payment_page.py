@@ -8,7 +8,9 @@ from utilities.logger import Logger
 
 class OrderCartPage(Base):
     """Страница оформления заказа"""
-    url = "https://afinabags.ru/order/"
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.url = "https://afinabags.ru/order/"
 
     # Locators
 
@@ -221,7 +223,7 @@ class OrderCartPage(Base):
 
     # Methods
     def order_cart_1(self):
-        """Оформлению заказа c доставкой курьером и оплатой наличными."""
+        """Оформлению заказа c доставкой курьером и оплатой наличными"""
         with allure.step("order_cart_1"):
             Logger.add_start_step(method="order_cart_1")
             self.get_current_url()  # Текущий URL
@@ -242,7 +244,7 @@ class OrderCartPage(Base):
             Logger.add_end_step(url=self.driver.current_url, method="order_cart_1")
 
     def order_cart_2(self):
-        """Оформлению заказа c доставкой сдэка и оплатой наличными."""
+        """Оформлению заказа c доставкой сдэка и оплатой наличными"""
         with allure.step("order_cart_2"):
             Logger.add_start_step(method="order_cart_2")
             self.get_current_url()  # Текущий URL
