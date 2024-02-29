@@ -109,21 +109,21 @@ class MainTest(UserActions):
         """Выполнить действия по выбору каталога и раздела 'Выбрать все'"""
         with allure.step("select_catalogs"):
             Logger.add_start_step(method="select_catalogs")
-            self.load_page_and_maximize(self.url)
-            self.hover_over_and_click_all_catalog()
-            self.assert_url("https://afinabags.ru/catalog/")
+            self.load_page_and_maximize(self.url)  # Загрузить страницу и максимизировать окно браузера
+            self.hover_over_and_click_all_catalog()  # Навести курсор на 'Каталог' и кликнуть по 'Посмотреть все'
+            self.assert_url("https://afinabags.ru/catalog/")  # Проверяем URL
             Logger.add_end_step(url=self.driver.current_url, method="select_catalogs")
 
     def authorization(self):
         """Авторизация пользователя"""
         with allure.step("authorization"):
             Logger.add_start_step(method="authorization")
-            self.load_page_and_maximize(self.url)
-            self.click_open_user()
-            self.click_button_user_mail()
-            self.input_email_user("123@test.ru")
-            self.input_password_user("testovich")
-            self.click_button_user_check()
-            self.assert_url(self.url + "personal/")
-            self.assert_text_on_page("Личный кабинет")
+            self.load_page_and_maximize(self.url)  # Загрузить страницу и максимизировать окно браузера
+            self.click_open_user()  # Клик по элементу открытия меню пользователя
+            self.click_button_user_mail()  # Клик по кнопке "Войти по почте"
+            self.input_email_user("123@test.ru")  # Ввод электронной почты пользователя
+            self.input_password_user("testovich")  # Ввод пароля пользователя
+            self.click_button_user_check()  # Клик по кнопке "Войти"
+            self.assert_url(self.url + "personal/")  # Проверяем URL
+            self.assert_text_on_page("Личный кабинет")  # Проверка отображения текста на странице
             Logger.add_end_step(url=self.driver.current_url, method="authorization")
