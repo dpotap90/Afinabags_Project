@@ -19,7 +19,6 @@ class CatalogPage(Base):
     mail_word = "//h1[@itemprop='name']"
 
     # Getters
-
     def get_filter_open(self):
         return self.element_is_clickable((By.XPATH, self.filter_open))
 
@@ -76,10 +75,7 @@ class CatalogPage(Base):
         self.get_select_product_692().click()
         print("Click select_product_692")
 
-
-
     # Methods
-
     def select_products_692(self):
         """Выполнить действия для выбора продукта 692"""
         with allure.step("select_products_692"):

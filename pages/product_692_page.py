@@ -10,12 +10,10 @@ class Product692Page(Base):
     url = "https://afinabags.ru/catalog/sumki_i_ryukzaki/model-692/"
 
     # Locators
-
     cart = "//button[@class='item-card__control-btn-cart']"
     checkout_button = "//a[contains(@class, 'item-card__control-btn-cart-color')]"
 
     # Getters
-
     def get_cart(self):
         """Получить элемент кнопки 'В корзину'."""
         return self.element_is_clickable((By.XPATH, self.cart))
@@ -25,14 +23,13 @@ class Product692Page(Base):
         return self.element_is_clickable((By.XPATH, self.checkout_button))
 
     # Actions
-
     def click_cart(self):
-        """Выполнить клик по элементу 'Добавить в корзину"."""
+        """Выполнить клик по элементу 'Добавить в корзину'"""
         self.get_cart().click()
         print("Click cart")
 
     def scroll_checkout_button(self):
-        """Прокрутить страницу до элемента."""
+        """Прокрутить страницу до элемента 'Перейти в корзину'"""
         self.driver.execute_script("window.scrollTo(0, 500);")
         print("Scroll checkout_button")
 
@@ -42,7 +39,6 @@ class Product692Page(Base):
         print("Click checkout_button")
 
     # Methods
-
     def cart_and_checkout_products_692(self):
         """Выполнить действия по добавлению продукта в корзину и оформлению заказа."""
         with allure.step("cart_and_checkout_products_692"):

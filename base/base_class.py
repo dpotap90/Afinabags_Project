@@ -63,7 +63,7 @@ class Base():
     def assert_url(self, result):
         """Method assert url"""
         get_url = self.driver.current_url
-        assert get_url == result
+        assert get_url == result, "URL не соответствует странице оформления заказа"
         print("Good value url")
 
     def assert_text_on_page(self, expected_text):

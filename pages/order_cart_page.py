@@ -70,6 +70,7 @@ class OrderOptions(Base):
     button_search_input = "//ymaps[@class='ymaps-2-1-79-searchbox-button-text']"
     pvz_msk = "//ymaps[text()='Москва']"
 
+    # Actions
     def select_city_spb(self):
         """Выполнить выбор города 'Санкт-Петербург'"""
         self.element_is_clickable((By.XPATH, self.city_spb)).click()
@@ -139,7 +140,7 @@ class OrderTest(OrderCartPage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    # Test_Methods
+    # Methods
     def order_cart_1(self):
         """Оформление заказа с доставкой курьером и оплатой наличными."""
         with allure.step("order_cart_1"):

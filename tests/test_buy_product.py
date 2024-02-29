@@ -5,6 +5,7 @@ from pages.order_cart_page import (OrderTest)
 from pages.payment_page import OrderCartPage
 from pages.product_692_page import Product692Page
 from pages.main_page import MainTest
+
 @allure.description("Test buy product")
 def test_buy_product(set_up, screenshot_allure, driver):
 
@@ -26,9 +27,6 @@ def test_buy_product(set_up, screenshot_allure, driver):
     pr_692.cart_and_checkout_products_692()
 
     """Order cart"""
-    # p = OrderCartPage(driver)
-    # p.order_cart_1()
-    # # p.order_cart_2()
 
     o = OrderTest(driver)
     o.order_cart_1()  # тест файла 1
